@@ -5,7 +5,7 @@ const StarRatingSelect = ({ ratings, value = 'ALL', onSelected }) => {
   //const totalCount = ratings.reduce((total, rating) => total + rating.count, 0)
 
   const changeRating = (value) => {
-    if(onSelected) onSelected(value)
+    if (onSelected) onSelected(value)
   }
 
   return (
@@ -13,8 +13,9 @@ const StarRatingSelect = ({ ratings, value = 'ALL', onSelected }) => {
       <div className="mb-2">
         <button
           type="button"
-          className={clsx("btn d-flex flex-column align-items-center",
-            value == 'ALL' ? "btn-primary" : "btn-outline-primary"
+          className={clsx(
+            'btn d-flex flex-column align-items-center',
+            value == 'ALL' ? 'btn-primary' : 'btn-outline-primary'
           )}
           style={{ minWidth: '120px' }}
           onClick={() => changeRating('ALL')}
@@ -27,8 +28,9 @@ const StarRatingSelect = ({ ratings, value = 'ALL', onSelected }) => {
         <div key={index} className="d-flex align-items-center mb-2">
           <button
             type="button"
-            className={clsx("btn d-flex flex-column align-items-center",
-              value == rating.stars ? "btn-primary" : "btn-outline-primary"
+            className={clsx(
+              'btn d-flex flex-column align-items-center',
+              value == rating.stars ? 'btn-primary' : 'btn-outline-primary'
             )}
             style={{ minWidth: '120px' }}
             onClick={() => changeRating(rating.stars)}

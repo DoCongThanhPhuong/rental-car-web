@@ -10,5 +10,5 @@ export const store = configureStore({
     authModal: authModalReducer,
     searchResultsDisplayType: searchResultsDisplayTypeReducer,
     search: searchReducer
-  },
+  }
 })

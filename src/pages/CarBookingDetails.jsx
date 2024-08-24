@@ -52,7 +52,7 @@ function CarBookingDetails() {
       <BreadCrumb
         links={[
           { path: '/', name: 'Home' },
-          { path: '/my-booking', name: 'My Booking' },
+          { path: '/my-cars', name: 'My Cars' },
           { name: 'Booking Details' }
         ]}
       />

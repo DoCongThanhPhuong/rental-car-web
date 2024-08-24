@@ -1,17 +1,17 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    show: false
+  show: false
 }
 
 export const authModalSlice = createSlice({
-    name: 'authModal',
-    initialState,
-    reducers: {
-        setShowAuthModal: (state, action) => {
-            state.show = action.payload
-        }
+  name: 'authModal',
+  initialState,
+  reducers: {
+    setShowAuthModal: (state, action) => {
+      state.show = action.payload
     }
+  }
 })
 
 export const { setShowAuthModal } = authModalSlice.actions

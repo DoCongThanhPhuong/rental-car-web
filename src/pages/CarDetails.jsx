@@ -1,22 +1,22 @@
 import { useEffect, useState } from 'react'
 import { Tab, Tabs } from 'react-bootstrap'
+import { useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import BreadCrumb from '../components/BreadCrumb'
 import Loading from '../components/Loading'
 import StarRating from '../components/StarRating'
-import AdditionalFunctions from '../components/forms/AdditionalFunctions'
 import ImageSlider from '../components/carousels/ImageSlider'
+import AdditionalFunctions from '../components/forms/AdditionalFunctions'
 import TermsOfUse from '../components/forms/TermsOfUse'
 import BasicInformationTab from '../components/my-cars/BasicInfomationTab'
 import { getCarsById } from '../shared/apis/carApi'
-import { convertToQueryParams, currencyFormat } from '../shared/utils'
 import { MULTIPLIED_AMOUNT } from '../shared/constants'
-import { useSelector } from 'react-redux'
+import { convertToQueryParams, currencyFormat } from '../shared/utils'
 
 function CarDetails() {
   const { carId } = useParams()
   const [car, setCar] = useState(null)
-  const searchInfor = useSelector(state => state.search)
+  const searchInfor = useSelector((state) => state.search)
 
   useEffect(() => {
     getCarsById(carId).then((data) => {
@@ -67,7 +67,12 @@ function CarDetails() {
                 <div className="row mb-2 fw-semibold">
                   <div className="col-4">Price: </div>
                   <div className="col-8">
-                    {currencyFormat((car?.basePrice ?? 0) * MULTIPLIED_AMOUNT / 1000, 'VND', false)}k/day
+                    {currencyFormat(
+                      ((car?.basePrice ?? 0) * MULTIPLIED_AMOUNT) / 1000,
+                      'VND',
+                      false
+                    )}
+                    k/day
                   </div>
                 </div>
                 <div className="row mb-2 fw-semibold">
@@ -87,7 +92,12 @@ function CarDetails() {
               </div>
               <div className="col-md-4 col-lg-3">
                 <div className="d-flex flex-column">
-                  <Link to={`/rent-car?carId=${carId}&${convertToQueryParams(searchInfor)}`} className="btn btn-primary">
+                  <Link
+                    to={`/rent-car?carId=${carId}&${convertToQueryParams(
+                      searchInfor
+                    )}`}
+                    className="btn btn-primary"
+                  >
                     Rent now
                   </Link>
                 </div>
@@ -128,14 +138,23 @@ function CarDetails() {
                     <p className="fw-semibold">
                       Base price:
                       <span className="ps-4">
-                        {currencyFormat((car?.basePrice ?? 0) * MULTIPLIED_AMOUNT, 'VND', false)}{' '}
+                        {currencyFormat(
+                          (car?.basePrice ?? 0) * MULTIPLIED_AMOUNT,
+                          'VND',
+                          false
+                        )}{' '}
                         VND/day
                       </span>
                     </p>
                     <p className="fw-semibold">
                       Required deposit:
                       <span className="ps-4">
-                        {currencyFormat((car?.deposit ?? 0) * MULTIPLIED_AMOUNT, 'VND', false)} VND
+                        {currencyFormat(
+                          (car?.deposit ?? 0) * MULTIPLIED_AMOUNT,
+                          'VND',
+                          false
+                        )}{' '}
+                        VND
                       </span>
                     </p>
                     <p className="fw-semibold">Terms of use:</p>

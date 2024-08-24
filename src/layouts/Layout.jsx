@@ -1,14 +1,13 @@
-import Header from './components/Header'
-import Footer from './components/Footer'
+import { useDispatch, useSelector } from 'react-redux'
 import { Outlet } from 'react-router-dom'
 import AuthModal from '../components/modals/AuthModal/AuthModal'
 import ScrollTop from '../components/ScrollTop'
-import { useDispatch, useSelector } from 'react-redux'
 import { setShowAuthModal } from '../shared/toolkits/authModalSlice'
+import Footer from './components/Footer'
+import Header from './components/Header'
 
 export default function Layout() {
-  
-  const { show: showAuthModal } = useSelector(state => state.authModal)
+  const { show: showAuthModal } = useSelector((state) => state.authModal)
   const dispatch = useDispatch()
 
   const handleOpenAuthModal = () => {

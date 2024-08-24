@@ -1,22 +1,23 @@
-import { useEffect, useState } from "react"
-import { MULTIPLIED_AMOUNT } from "../../shared/constants"
-import { currencyFormat } from "../../shared/utils"
-import { Link } from "react-router-dom"
-import { getMyWalletApi } from "../../shared/apis/userApi"
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { getMyWalletApi } from '../../shared/apis/userApi'
+import { MULTIPLIED_AMOUNT } from '../../shared/constants'
+import { currencyFormat } from '../../shared/utils'
 
 function PaymentTab() {
-
   const [wallet, setWallet] = useState(0)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     setLoading(true)
-    getMyWalletApi().then(data => {
-      const resWallet = data?.data?.wallet ?? 0
-      setWallet(resWallet * MULTIPLIED_AMOUNT)
-    }).finally(() => {
-      setLoading(false)
-    })
+    getMyWalletApi()
+      .then((data) => {
+        const resWallet = data?.data?.wallet ?? 0
+        setWallet(resWallet * MULTIPLIED_AMOUNT)
+      })
+      .finally(() => {
+        setLoading(false)
+      })
   }, [])
 
   return (
@@ -32,7 +33,10 @@ function PaymentTab() {
         <label className="form-check-label" htmlFor="rdbWallet">
           My Wallet
         </label>
-        <p>Current balance: {loading ? 'Loading...' : currencyFormat(wallet, 'VND', false)} VND</p>
+        <p>
+          Current balance:{' '}
+          {loading ? 'Loading...' : currencyFormat(wallet, 'VND', false)} VND
+        </p>
       </div>
       <p>Please make sure to have suffcient when you return a car</p>
       <p>

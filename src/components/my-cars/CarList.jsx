@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
-import { currencyFormat } from "../../shared/utils";
-import ImageSlider from "../carousels/ImageSlider";
-import StarRating from "../StarRating";
-import { MULTIPLIED_AMOUNT } from "../../shared/constants";
+import { Link } from 'react-router-dom'
+import { MULTIPLIED_AMOUNT } from '../../shared/constants'
+import { currencyFormat } from '../../shared/utils'
+import ImageSlider from '../carousels/ImageSlider'
+import StarRating from '../StarRating'
 
 export default function CarList({ cars = [] }) {
   return (
@@ -31,7 +31,7 @@ export default function CarList({ cars = [] }) {
               <div className="col-8">
                 {currencyFormat(
                   ((item?.basePrice ?? 0) * MULTIPLIED_AMOUNT) / 1000,
-                  "VND",
+                  'VND',
                   false
                 )}
                 k/day
@@ -67,5 +67,5 @@ export default function CarList({ cars = [] }) {
         </div>
       ))}
     </div>
-  );
+  )
 }

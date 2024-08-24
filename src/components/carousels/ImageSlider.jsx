@@ -1,6 +1,6 @@
-import { Carousel } from "react-bootstrap";
-import styles from "./styles.module.css";
-import clsx from "clsx";
+import clsx from 'clsx'
+import { Carousel } from 'react-bootstrap'
+import styles from './styles.module.css'
 
 const ImageSlider = ({ images = [] }) => {
   return (
@@ -8,7 +8,7 @@ const ImageSlider = ({ images = [] }) => {
       {images.map((item, index) => (
         <Carousel.Item key={item?.id || index}>
           <div
-            className={clsx("d-block w-100", styles.carousel_image_container)}
+            className={clsx('d-block w-100', styles.carousel_image_container)}
           >
             <img
               className={styles.carousel_image}
@@ -20,7 +20,7 @@ const ImageSlider = ({ images = [] }) => {
         </Carousel.Item>
       ))}
     </Carousel>
-  );
-};
+  )
+}
 
-export default ImageSlider;
+export default ImageSlider

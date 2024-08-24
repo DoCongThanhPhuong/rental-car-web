@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
 import AdditionalFunctions from '../forms/AdditionalFunctions'
 import ImagesUploadV2 from '../forms/ImagesUploadV2'
-import { toast } from 'react-toastify'
 
 const Step2 = ({ newCar = {}, setNewCar, nextStep, onCancel }) => {
   const {

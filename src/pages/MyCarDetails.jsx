@@ -7,17 +7,16 @@ import EmptyState from '../components/EmptyState'
 import LoadingState from '../components/LoadingState'
 import ConfirmModal from '../components/modals/ConfirmModal'
 import BasicInformationTab from '../components/my-cars/BasicInfomationTab'
+import CarBookingsTab from '../components/my-cars/CarBookingTab'
 import DetailsTab from '../components/my-cars/DetailsTab'
 import PricingTab from '../components/my-cars/PricingTab'
 import StarRating from '../components/StarRating'
 import { getCarsById, stopRentingApi } from '../shared/apis/carApi'
 import { MULTIPLIED_AMOUNT } from '../shared/constants'
 import { currencyFormat } from '../shared/utils'
-import CarBookingsTab from '../components/my-cars/CarBookingTab'
 
 export default function MyCarDetails() {
   const { carId } = useParams()
-  console.log('🚀 ~ MyCarDetails ~  carId:', carId)
   const [car, setCar] = useState(null)
   const [loading, setLoading] = useState(true)
   const [showStopRentingModal, setStopRentingModal] = useState(false)
@@ -249,9 +248,7 @@ export default function MyCarDetails() {
                       <EmptyState />
                     </div>
                   )}
-                  {car != null && (
-                    <CarBookingsTab carId={carId} />
-                  )}
+                  {car != null && <CarBookingsTab carId={carId} />}
                 </div>
               </div>
             </div>

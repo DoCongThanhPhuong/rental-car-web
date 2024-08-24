@@ -1,11 +1,10 @@
 import { useCallback, useEffect, useState } from 'react'
-import CustomPagination from '../paginations/CustomPagination'
 import { getCarBookingApi } from '../../shared/apis/bookingApi'
 import LoadingState from '../LoadingState'
+import CustomPagination from '../paginations/CustomPagination'
 import CarBookingList from './car-bookings/CarBookingList'
 
 function CarBookingTab({ carId }) {
-
   const [loading, setLoading] = useState(true)
   const [carBookings, setCarBookings] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
@@ -14,15 +13,17 @@ function CarBookingTab({ carId }) {
 
   useEffect(() => {
     setLoading(true)
-    getCarBookingApi(carId, currentPage, perPage).then((data) => {
-      setCarBookings(data?.data ?? [])
-      const meta = data?.meta
-      if (meta.totalPages !== total) setTotal(meta.totalPages)
-      if (meta.currentPage + 1 !== currentPage)
-        setCurrentPage(meta.currentPage + 1)
-    }).finally(() => {
-      setLoading(false)
-    })
+    getCarBookingApi(carId, currentPage, perPage)
+      .then((data) => {
+        setCarBookings(data?.data ?? [])
+        const meta = data?.meta
+        if (meta.totalPages !== total) setTotal(meta.totalPages)
+        if (meta.currentPage + 1 !== currentPage)
+          setCurrentPage(meta.currentPage + 1)
+      })
+      .finally(() => {
+        setLoading(false)
+      })
   }, [carId, currentPage, perPage, total])
 
   const handlePerPageChange = useCallback((e) => {
@@ -33,7 +34,11 @@ function CarBookingTab({ carId }) {
 
   return (
     <div>
-      {loading ? <LoadingState /> : <CarBookingList carBookings={carBookings} />}
+      {loading ? (
+        <LoadingState />
+      ) : (
+        <CarBookingList carBookings={carBookings} />
+      )}
       <div className="row">
         <div className="col d-flex flex-column flex-md-row justify-content-end align-items-center">
           <CustomPagination

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
+import { MULTIPLIED_AMOUNT } from '../../shared/constants'
 import { currencyFormat, formatDateTime } from '../../shared/utils'
 import ImageSlider from '../carousels/ImageSlider'
-import { MULTIPLIED_AMOUNT } from '../../shared/constants'
 
 export default function MyBookingCard({ data = [] }) {
   return (
@@ -30,17 +30,35 @@ export default function MyBookingCard({ data = [] }) {
                 <div className="row mb-2 fw-semibold">
                   <div className="col-5"> Base price:</div>
                   <div className="col-7">
-                    {currencyFormat((item?.basePrice ?? 0) * MULTIPLIED_AMOUNT / 1000, 'VND', false)}
+                    {currencyFormat(
+                      ((item?.basePrice ?? 0) * MULTIPLIED_AMOUNT) / 1000,
+                      'VND',
+                      false
+                    )}
                     k/day
                   </div>
                 </div>
                 <div className="row mb-2 fw-semibold">
                   <div className="col-5">Total:</div>
-                  <div className="col-7">{currencyFormat((item?.total ?? 0) * MULTIPLIED_AMOUNT / 1000, 'VND', false)}k</div>
+                  <div className="col-7">
+                    {currencyFormat(
+                      ((item?.total ?? 0) * MULTIPLIED_AMOUNT) / 1000,
+                      'VND',
+                      false
+                    )}
+                    k
+                  </div>
                 </div>
                 <div className="row mb-2 fw-semibold">
                   <div className="col-5">Deposit:</div>
-                  <div className="col-7">{currencyFormat((item?.deposit ?? 0) * MULTIPLIED_AMOUNT / 1000, 'VND', false)}k</div>
+                  <div className="col-7">
+                    {currencyFormat(
+                      ((item?.deposit ?? 0) * MULTIPLIED_AMOUNT) / 1000,
+                      'VND',
+                      false
+                    )}
+                    k
+                  </div>
                 </div>
                 <div className="row mb-2 fw-semibold">
                   <div className="col-5">Booking No.</div>

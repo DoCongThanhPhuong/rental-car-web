@@ -1,7 +1,7 @@
 import axios from 'axios'
+import { API_URL } from '../constants/apiUrl'
 import { generateMetaSearchParams } from '../utils'
 import axiosInstance from '../utils/authorizedAxios'
-import { API_URL } from '../constants/apiUrl'
 
 export const getCarsByOwner = async ({
   page = 1,

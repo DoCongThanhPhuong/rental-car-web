@@ -1,6 +1,6 @@
+import clsx from 'clsx'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import clsx from 'clsx'
 import { useSelector } from 'react-redux'
 import { parseAddress } from '../../shared/utils'
 
@@ -22,7 +22,6 @@ export default function BookingStep1({ onCancel, onNextStep }) {
   const user = useSelector((state) => state.auth.user)
 
   useEffect(() => {
-
     const { houseNumber, ward, district, city } = parseAddress(user?.address)
     const birthDay = new Date(user?.birthDay)
 

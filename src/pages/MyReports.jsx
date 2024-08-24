@@ -1,23 +1,24 @@
+import { useEffect, useState } from 'react'
 import { Container, Tab, Tabs } from 'react-bootstrap'
 import BreadCrumb from '../components/BreadCrumb'
-import StarRating from '../components/StarRating'
-import { useEffect, useState } from 'react'
-import { getRatingApi } from '../shared/apis/feedbackApi'
-import ReportDetails from '../components/my-report/ReportDetails'
 import LoadingState from '../components/LoadingState'
+import ReportDetails from '../components/my-report/ReportDetails'
+import StarRating from '../components/StarRating'
+import { getRatingApi } from '../shared/apis/feedbackApi'
 
 function MyReports() {
-
   const [myRatings, setMyRatings] = useState(0)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     setLoading(true)
-    getRatingApi().then(data => {
-      setMyRatings(data?.data?.rating ?? 0)
-    }).finally(() => {
-      setLoading(false)
-    })
+    getRatingApi()
+      .then((data) => {
+        setMyRatings(data?.data?.rating ?? 0)
+      })
+      .finally(() => {
+        setLoading(false)
+      })
   }, [])
 
   return (
@@ -50,10 +51,12 @@ function MyReports() {
               <h5>Average Ratings</h5>
               <div className="d-flex flex-column align-items-center">
                 {loading && <LoadingState />}
-                {!loading && <>
-                  <h2>{ Math.round(parseFloat(myRatings) * 100) / 100 }</h2>
-                  <StarRating value={myRatings} size={36} />
-                </>}
+                {!loading && (
+                  <>
+                    <h2>{Math.round(parseFloat(myRatings) * 100) / 100}</h2>
+                    <StarRating value={myRatings} size={36} />
+                  </>
+                )}
               </div>
             </div>
             <ReportDetails />

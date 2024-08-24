@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { forgetPasswordApi } from '../shared/apis/authApi'
 import { toast } from 'react-toastify'
+import { forgetPasswordApi } from '../shared/apis/authApi'
 
 function ForgotPassword() {
   const [email, setEmail] = useState('')

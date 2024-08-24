@@ -1,15 +1,15 @@
 import { useEffect } from 'react'
 import { Container, Tab, Tabs } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
+import { useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 import InfoCard from '../components/booking/InfoCard'
 import BreadCrumb from '../components/BreadCrumb'
 import ChangePasswordForm from '../components/forms/ChangePasswordForm'
 import Loading from '../components/Loading'
 import { getMyProfileApi, updateMyProfileApi } from '../shared/apis/userApi'
-import { formatDateValueForInput, parseAddress } from '../shared/utils'
-import { useDispatch, useSelector } from 'react-redux'
 import { setUpdatedUser } from '../shared/toolkits/authSlice'
+import { formatDateValueForInput, parseAddress } from '../shared/utils'
 
 function MyProfile() {
   const {

@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
-import BreadCrumb from '../components/BreadCrumb'
-import { getMyBookingApi } from '../shared/apis/bookingApi'
-import LoadingState from '../components/LoadingState'
 import MyBookingCard from '../components/booking/MyBookingCard'
+import BreadCrumb from '../components/BreadCrumb'
 import EmptyState from '../components/EmptyState'
+import LoadingState from '../components/LoadingState'
 import CustomPagination from '../components/paginations/CustomPagination'
+import { getMyBookingApi } from '../shared/apis/bookingApi'
 
 function MyBooking() {
   const [currentPage, setCurrentPage] = useState(1)
@@ -32,7 +32,7 @@ function MyBooking() {
       .finally(() => {
         setLoading(false)
       })
-  }, [currentPage, perPage, sortType])
+  }, [currentPage, perPage, sortType, total])
 
   const handlePageChange = (page) => {
     setCurrentPage(page)

@@ -1,5 +1,5 @@
-import clsx from "clsx"
-import { TERMS_OF_USE } from "../../shared/constants/carConstants";
+import clsx from 'clsx'
+import { TERMS_OF_USE } from '../../shared/constants/carConstants'
 
 export default function TermsOfUse({
   className = '',
